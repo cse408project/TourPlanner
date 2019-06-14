@@ -14,3 +14,6 @@ python manage.py sqlmigrate planner 0001
 python manage.py makemigrations blog
 python manage.py sqlmigrate planner 0001
 python manage.py sqlmigrate blog 0001
+
+#To Run the server 
+127.0.0.1:8000/admin
