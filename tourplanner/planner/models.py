@@ -42,7 +42,7 @@ class USER(models.Model):
     cityID = models.ForeignKey(CITY, on_delete=models.CASCADE )
     Address = models.CharField(max_length=200)
     Contact = models.CharField(max_length=50)
-    image = models.ImageField( upload_to='allImages/', null=True )
+    image = models.ImageField( upload_to='allImages/' , default='noimage.jpg' )
     About = models.CharField(max_length=50, blank=True)
     Gender = models.CharField(max_length=50)
     def image_tag(self):
@@ -69,7 +69,7 @@ class GUIDE(models.Model):
     Password = models.CharField(max_length=50)
     Address = models.CharField(max_length=200)
     Contact = models.CharField(max_length=50)
-    image = models.ImageField( upload_to='allImages/', null=True )
+    image = models.ImageField( upload_to='allImages/' , default='noimage.jpg' )
     About = models.CharField(max_length=50, blank=True)
     Gender = models.CharField(max_length=50)
     def image_tag(self):
@@ -89,7 +89,7 @@ class BLOG(models.Model):
     blogData = models.CharField(max_length=2000)
     guideID = models.ForeignKey(GUIDE, on_delete=models.CASCADE, null=True)
     userID = models.ForeignKey(USER, on_delete=models.CASCADE, null=True)
-    image = models.ImageField( upload_to='allImages/', null=True )
+    image = models.ImageField( upload_to='allImages/', default='noimage.jpg' )
     def image_tag(self):
         return mark_safe('<img src="{}" width="100" height="50" />'.format(str(self.image.url)))
 
