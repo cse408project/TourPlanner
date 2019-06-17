@@ -9,6 +9,9 @@ urlpatterns = [
     path('planner/', include('planner.urls')),
     path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
+    path('register/', include('RegLogin.urls')),
+    path('login/', include('RegLogin.urlsLogin')),
+    path("", include('RegLogin.urls')),
 ]
 
 if settings.DEBUG:
