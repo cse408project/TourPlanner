@@ -40,7 +40,7 @@ class USER(models.Model):
     FirstName = models.CharField(max_length=50)
     LastName = models.CharField(max_length=50, blank=True)
     Password = models.CharField(max_length=50)
-    cityID = models.ForeignKey(CITY, on_delete=models.CASCADE )
+    cityID = models.ForeignKey(CITY, on_delete=models.CASCADE, default=3 )
     Address = models.CharField(max_length=200)
     Contact = models.CharField(max_length=50)
     image = models.ImageField( upload_to='allImages/' , default='noimage.jpg' )
