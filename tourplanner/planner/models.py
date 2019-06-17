@@ -8,7 +8,7 @@ class CITY(models.Model):
     city_name = models.CharField( max_length=200 )
     longitude = models.CharField(max_length=30, blank=True)
     latitude = models.CharField(max_length=30, blank=True)
-    image = models.ImageField( upload_to='allImages/' )
+    image = models.ImageField(upload_to='allImages/')
 
     def image_tag(self):
         return mark_safe('<img src="{}" width="100" height="50" />'.format(str(self.image.url)))
@@ -36,11 +36,11 @@ class HOTEL(models.Model):
 
 
 class USER(models.Model):
-    Email = models.CharField(max_length=50)
+    Email = models.EmailField(max_length=50)
     FirstName = models.CharField(max_length=50)
     LastName = models.CharField(max_length=50, blank=True)
     Password = models.CharField(max_length=50)
-    #cityID = models.ForeignKey(CITY, on_delete=models.CASCADE )
+    cityID = models.ForeignKey(CITY, on_delete=models.CASCADE )
     Address = models.CharField(max_length=200)
     Contact = models.CharField(max_length=50)
     image = models.ImageField( upload_to='allImages/' , default='noimage.jpg' )
@@ -110,11 +110,11 @@ class TOURISTSPOT(models.Model):
     spotName = models.CharField(max_length=75)
     spotInfo = models.CharField(max_length=2000)
     cityID = models.ForeignKey(CITY, on_delete=models.CASCADE)
-    image = models.ImageField( upload_to='allImages/' )
+    image = models.ImageField(upload_to='allImages/')
     longitude = models.CharField(max_length=30, blank=True)
     latitude = models.CharField(max_length=30, blank=True)
     def image_tag(self):
-        return mark_safe('<img src="{}" width="100" height="50" />'.format(str(self.images.url)))
+        return mark_safe('<img src="{}" width="100" height="50" />'.format(str(self.image.url)))
 
     image_tag.short_description = 'Image'
     '''def __str__(self):
