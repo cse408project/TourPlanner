@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.html import mark_safe
+
 # Create your models here.
 
 
@@ -35,16 +36,19 @@ class HOTEL(models.Model):
 
 
 class USER(models.Model):
-    Email = models.CharField(max_length=50)
+    Email = models.EmailField(max_length=50)
     FirstName = models.CharField(max_length=50)
     LastName = models.CharField(max_length=50, blank=True)
     Password = models.CharField(max_length=50)
-    cityID = models.ForeignKey(CITY, on_delete=models.CASCADE )
+    cityID = models.ForeignKey(CITY, on_delete=models.CASCADE, default=3 )
     Address = models.CharField(max_length=200)
     Contact = models.CharField(max_length=50)
     image = models.ImageField( upload_to='allImages/' , default='noimage.jpg' )
     About = models.CharField(max_length=50, blank=True)
     Gender = models.CharField(max_length=50)
+
+    #def get_absolute_url(self):
+
     def image_tag(self):
         return mark_safe('<img src="{}" width="100" height="50" />'.format(str(self.image.url)))
 
@@ -63,7 +67,7 @@ class GROUP(models.Model):
 
 
 class GUIDE(models.Model):
-    Email = models.CharField(max_length=50)
+    Email = models.EmailField(max_length=50)
     FirstName = models.CharField(max_length=50)
     LastName = models.CharField(max_length=50, blank=True)
     Password = models.CharField(max_length=50)
@@ -72,6 +76,7 @@ class GUIDE(models.Model):
     image = models.ImageField( upload_to='allImages/' , default='noimage.jpg' )
     About = models.CharField(max_length=50, blank=True)
     Gender = models.CharField(max_length=50)
+
     def image_tag(self):
         return mark_safe('<img src="{}" width="100" height="50" />'.format(str(self.image.url)))
 
